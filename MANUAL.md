@@ -288,7 +288,7 @@ projeto-simples-1.0/
 ├── estudos/                # explicação de cada conceito usado
 ├── .env.example            # modelo do .env
 ├── requirements.txt        # bibliotecas do Python
-├── PLANO.md                # plano das etapas do projeto
+├── README.md               # apresentação do projeto
 └── MANUAL.md               # este arquivo
 ```
 
