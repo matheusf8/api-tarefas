@@ -130,8 +130,7 @@ O projeto foi construído em etapas, e cada uma virou um commit:
 | 6 | Testes automatizados |
 | – | Frontend em React |
 
-Usei o **Claude Code** como apoio durante o desenvolvimento e revisei cada
-parte até conseguir explicá-la. A pasta **[estudos/](estudos/README.md)** tem
+Usei o **Claude Code** como apoio durante o desenvolvimento. A pasta **[estudos/](estudos/README.md)** tem
 um resumo de cada conceito usado (ORM, sessão, JWT, IDOR, CORS, fixtures,
 hooks do React...).
 
