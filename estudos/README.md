@@ -20,5 +20,6 @@ entrevista**.
 | 12 | [12-rotas-protegidas-e-autorizacao.md](12-rotas-protegidas-e-autorizacao.md) | Token nas rotas, 401 × 404, IDOR | 5 |
 | 13 | [13-relacionamento-1-n.md](13-relacionamento-1-n.md) | Chave estrangeira e 1:N | 5 |
 | 14 | [14-routers.md](14-routers.md) | Organizando rotas com `APIRouter` | 5 |
+| 15 | [15-testes-com-pytest.md](15-testes-com-pytest.md) | Pytest, fixtures, banco de teste e `lifespan` | 6 |
 
 Novos arquivos entram aqui a cada etapa.
