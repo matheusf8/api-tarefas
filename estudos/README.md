@@ -13,5 +13,6 @@ entrevista**.
 | 05 | [05-orm.md](05-orm.md) | O que é ORM (SQLAlchemy) | 2 |
 | 06 | [06-sessao-commit-refresh.md](06-sessao-commit-refresh.md) | Sessão, commit e refresh | 2 |
 | 07 | [07-injecao-de-dependencia.md](07-injecao-de-dependencia.md) | `Depends(get_db)` | 2 |
+| 08 | [08-query-params-e-paginacao.md](08-query-params-e-paginacao.md) | Filtros, `skip`/`limit` e `Query` | 3 |
 
 Novos arquivos entram aqui a cada etapa.

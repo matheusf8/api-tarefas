@@ -1,4 +1,4 @@
-from fastapi import Depends, FastAPI, HTTPException
+from fastapi import Depends, FastAPI, HTTPException, Query
 from sqlalchemy.orm import Session
 
 from app import models
@@ -25,8 +25,16 @@ def criar_tarefa(tarefa: TaskCreate, db: Session = Depends(get_db)):
 
 
 @app.get("/tasks", response_model=list[TaskOut])
-def listar_tarefas(db: Session = Depends(get_db)):
-    return db.query(models.Task).all()
+def listar_tarefas(
+    concluida: bool | None = None,
+    skip: int = Query(default=0, ge=0),
+    limit: int = Query(default=10, ge=1, le=100),
+    db: Session = Depends(get_db),
+):
+    consulta = db.query(models.Task)
+    if concluida is not None:
+        consulta = consulta.filter(models.Task.concluida == concluida)
+    return consulta.order_by(models.Task.id).offset(skip).limit(limit).all()
 
 
 @app.get("/tasks/{id}", response_model=TaskOut)
