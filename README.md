@@ -11,7 +11,7 @@ tela em React.
 ![FastAPI](https://img.shields.io/badge/FastAPI-009688?logo=fastapi&logoColor=white)
 ![SQLite](https://img.shields.io/badge/SQLite-003B57?logo=sqlite&logoColor=white)
 ![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=black)
-![Testes](https://img.shields.io/badge/testes-24%20passando-brightgreen)
+[![CI](https://github.com/matheusf8/api-tarefas/actions/workflows/ci.yml/badge.svg)](https://github.com/matheusf8/api-tarefas/actions/workflows/ci.yml)
 
 ---
 
@@ -136,7 +136,7 @@ hooks do React...).
 
 ## Próximos passos
 
-- [ ] CI no GitHub Actions rodando o pytest
+- [x] CI no GitHub Actions rodando o pytest e o build do frontend
 - [ ] Docker
 - [ ] Deploy (API no Render, frontend na Vercel)
 - [ ] Editar o título da tarefa pela tela
