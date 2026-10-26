@@ -1,4 +1,6 @@
-from pydantic import BaseModel
+from datetime import datetime
+
+from pydantic import BaseModel, ConfigDict
 
 
 class TaskCreate(BaseModel):
@@ -13,7 +15,10 @@ class TaskUpdate(BaseModel):
 
 
 class TaskOut(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
     id: int
     titulo: str
     descricao: str | None = None
     concluida: bool
+    criada_em: datetime

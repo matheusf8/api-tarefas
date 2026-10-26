@@ -1,11 +1,13 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import Depends, FastAPI, HTTPException
+from sqlalchemy.orm import Session
 
-from app.schemas import TaskCreate, TaskUpdate, TaskOut
+from app import models
+from app.database import Base, engine, get_db
+from app.schemas import TaskCreate, TaskOut, TaskUpdate
+
+Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
-
-tarefas = []
-proximo_id = 1
 
 
 @app.get("/")
@@ -14,48 +16,44 @@ def retorna():
 
 
 @app.post("/tasks", status_code=201, response_model=TaskOut)
-def criar_tarefa(tarefa: TaskCreate):
-    global proximo_id
-
-    nova = {
-        "id": proximo_id,
-        "titulo": tarefa.titulo,
-        "descricao": tarefa.descricao,
-        "concluida": False,
-    }
-    tarefas.append(nova)
-    proximo_id += 1
+def criar_tarefa(tarefa: TaskCreate, db: Session = Depends(get_db)):
+    nova = models.Task(titulo=tarefa.titulo, descricao=tarefa.descricao)
+    db.add(nova)
+    db.commit()
+    db.refresh(nova)
     return nova
 
 
 @app.get("/tasks", response_model=list[TaskOut])
-def listar_tarefas():
-    return tarefas
+def listar_tarefas(db: Session = Depends(get_db)):
+    return db.query(models.Task).all()
 
 
 @app.get("/tasks/{id}", response_model=TaskOut)
-def buscar_tarefa(id: int):
-    for t in tarefas:
-        if t["id"] == id:
-            return t
-    raise HTTPException(status_code=404, detail="Tarefa não encontrada")
+def buscar_tarefa(id: int, db: Session = Depends(get_db)):
+    tarefa = db.get(models.Task, id)
+    if tarefa is None:
+        raise HTTPException(status_code=404, detail="Tarefa não encontrada")
+    return tarefa
 
 
 @app.put("/tasks/{id}", response_model=TaskOut)
-def editar_tarefa(id: int, dados: TaskUpdate):
-    for t in tarefas:
-        if t["id"] == id:
-            t["titulo"] = dados.titulo
-            t["descricao"] = dados.descricao
-            t["concluida"] = dados.concluida
-            return t
-    raise HTTPException(status_code=404, detail="Tarefa não encontrada")
+def editar_tarefa(id: int, dados: TaskUpdate, db: Session = Depends(get_db)):
+    tarefa = db.get(models.Task, id)
+    if tarefa is None:
+        raise HTTPException(status_code=404, detail="Tarefa não encontrada")
+    tarefa.titulo = dados.titulo
+    tarefa.descricao = dados.descricao
+    tarefa.concluida = dados.concluida
+    db.commit()
+    db.refresh(tarefa)
+    return tarefa
 
 
 @app.delete("/tasks/{id}", status_code=204)
-def apagar_tarefa(id: int):
-    for t in tarefas:
-        if t["id"] == id:
-            tarefas.remove(t)
-            return
-    raise HTTPException(status_code=404, detail="Tarefa não encontrada")
+def apagar_tarefa(id: int, db: Session = Depends(get_db)):
+    tarefa = db.get(models.Task, id)
+    if tarefa is None:
+        raise HTTPException(status_code=404, detail="Tarefa não encontrada")
+    db.delete(tarefa)
+    db.commit()
