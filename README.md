@@ -145,4 +145,4 @@ hooks do React...).
 
 ---
 
-Feito por **Matheus Franco**: [GitHub](https://github.com/matheusf8) · [LinkedIn](https://linkedin.com/in/matheus-franco-40a983325)
+Feito por **Matheus Franco**: [GitHub](https://github.com/matheusf8) · [LinkedIn](https://www.linkedin.com/in/matheusfrancon)
