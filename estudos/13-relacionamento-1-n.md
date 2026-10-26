@@ -58,11 +58,12 @@ def ligar_chaves_estrangeiras(conexao, _):
 No teste, inserir uma tarefa com `user_id = 999` deu `IntegrityError` ✅
 (PostgreSQL e MySQL já vêm com isso ligado.)
 
-## Por que apagamos o banco nesta etapa?
+## E se o banco já existisse?
 
 O `create_all` **só cria tabelas que não existem**. Ele não acrescenta a
-coluna `user_id` numa tabela `tasks` que já existe. Em desenvolvimento, apagar
-o `tarefas.db` resolve. Em produção, ninguém apaga o banco: usam-se
+coluna `user_id` numa tabela `tasks` que já existe. Nesta etapa o `tarefas.db`
+ainda não existia, então ele nasceu com a estrutura nova. Se existisse, em
+desenvolvimento bastaria apagar o arquivo. Em produção, ninguém apaga o banco: usam-se
 **migrations**, com o **Alembic**, que alteram a tabela mantendo os dados.
 
 ## 🎯 Resposta de entrevista
