@@ -21,5 +21,7 @@ entrevista**.
 | 13 | [13-relacionamento-1-n.md](13-relacionamento-1-n.md) | Chave estrangeira e 1:N | 5 |
 | 14 | [14-routers.md](14-routers.md) | Organizando rotas com `APIRouter` | 5 |
 | 15 | [15-testes-com-pytest.md](15-testes-com-pytest.md) | Pytest, fixtures, banco de teste e `lifespan` | 6 |
+| 16 | [16-react-basico.md](16-react-basico.md) | Componentes, props, `useState`, `useEffect` | Frontend |
+| 17 | [17-frontend-conversando-com-a-api.md](17-frontend-conversando-com-a-api.md) | `fetch`, token no navegador e CORS | Frontend |
 
 Novos arquivos entram aqui a cada etapa.
