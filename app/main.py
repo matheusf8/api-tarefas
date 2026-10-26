@@ -3,11 +3,13 @@ from sqlalchemy.orm import Session
 
 from app import models
 from app.database import Base, engine, get_db
+from app.routers import users
 from app.schemas import TaskCreate, TaskOut, TaskUpdate
 
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
+app.include_router(users.router)
 
 
 @app.get("/")

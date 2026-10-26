@@ -14,5 +14,8 @@ entrevista**.
 | 06 | [06-sessao-commit-refresh.md](06-sessao-commit-refresh.md) | Sessão, commit e refresh | 2 |
 | 07 | [07-injecao-de-dependencia.md](07-injecao-de-dependencia.md) | `Depends(get_db)` | 2 |
 | 08 | [08-query-params-e-paginacao.md](08-query-params-e-paginacao.md) | Filtros, `skip`/`limit` e `Query` | 3 |
+| 09 | [09-hash-de-senha.md](09-hash-de-senha.md) | Hash de senha com bcrypt | 4 |
+| 10 | [10-jwt.md](10-jwt.md) | JWT: o que é e como funciona | 4 |
+| 11 | [11-env-e-segredos.md](11-env-e-segredos.md) | `.env`, `.env.example` e segredos | 4 |
 
 Novos arquivos entram aqui a cada etapa.
