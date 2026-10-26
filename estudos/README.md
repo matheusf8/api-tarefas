@@ -17,5 +17,8 @@ entrevista**.
 | 09 | [09-hash-de-senha.md](09-hash-de-senha.md) | Hash de senha com bcrypt | 4 |
 | 10 | [10-jwt.md](10-jwt.md) | JWT: o que é e como funciona | 4 |
 | 11 | [11-env-e-segredos.md](11-env-e-segredos.md) | `.env`, `.env.example` e segredos | 4 |
+| 12 | [12-rotas-protegidas-e-autorizacao.md](12-rotas-protegidas-e-autorizacao.md) | Token nas rotas, 401 × 404, IDOR | 5 |
+| 13 | [13-relacionamento-1-n.md](13-relacionamento-1-n.md) | Chave estrangeira e 1:N | 5 |
+| 14 | [14-routers.md](14-routers.md) | Organizando rotas com `APIRouter` | 5 |
 
 Novos arquivos entram aqui a cada etapa.

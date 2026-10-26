@@ -1,6 +1,7 @@
 from datetime import datetime
 
-from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy import ForeignKey
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.database import Base
 
@@ -14,6 +15,9 @@ class Task(Base):
     descricao: Mapped[str | None]
     concluida: Mapped[bool] = mapped_column(default=False)
     criada_em: Mapped[datetime] = mapped_column(default=datetime.now)
+    user_id: Mapped[int] = mapped_column(ForeignKey("users.id"), index=True)
+
+    dono: Mapped["User"] = relationship(back_populates="tarefas")
 
 
 class User(Base):
@@ -24,3 +28,5 @@ class User(Base):
     email: Mapped[str] = mapped_column(unique=True, index=True)
     senha_hash: Mapped[str]
     criado_em: Mapped[datetime] = mapped_column(default=datetime.now)
+
+    tarefas: Mapped[list["Task"]] = relationship(back_populates="dono", cascade="all, delete-orphan")
